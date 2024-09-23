@@ -1,0 +1,32 @@
+<div class="container mx-auto mt-5">
+  <h1 class="text-2xl font-bold mb-4">Task List</h1>
+
+  <div class="mb-4">
+    <input
+      [(ngModel)]="newTaskTitle"
+      class="border p-2 rounded w-full"
+      placeholder="Add a new task..."
+    />
+    <button
+      (click)="addTask()"
+      class="bg-blue-500 text-white py-2 px-4 rounded mt-2 w-full"
+    >
+      Add Task
+    </button>
+  </div>
+
+  <ul>
+    <li
+      *ngFor="let task of tasks"
+      class="flex justify-between items-center mb-2"
+    >
+      <span>{{ task.title }}</span>
+      <button
+        (click)="deleteTask(task.id!)"
+        class="bg-red-500 text-white py-1 px-3 rounded"
+      >
+        Delete
+      </button>
+    </li>
+  </ul>
+</div>
