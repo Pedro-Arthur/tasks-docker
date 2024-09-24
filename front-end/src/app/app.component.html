@@ -19,7 +19,6 @@
     <li
       *ngFor="let task of tasks"
       class="flex justify-between items-center p-3 bg-white rounded shadow-md hover:shadow-lg transition duration-300"
-      [ngClass]="{ 'line-through text-gray-500': task.completed }"
     >
       <div class="flex items-center">
         <input
@@ -28,7 +27,9 @@
           (change)="updateTask(task)"
           class="mr-3"
         />
-        <span>{{ task.title }}</span>
+        <span [ngClass]="{ 'line-through text-gray-500': task.completed }">
+          {{ task.title }}
+        </span>
       </div>
       <button
         (click)="deleteTask(task.id!)"
