@@ -1,31 +1,40 @@
-<div class="container mx-auto mt-5">
-  <h1 class="text-2xl font-bold mb-4">Task List</h1>
+<div class="container mx-auto mt-5 max-w-lg">
+  <h1 class="text-3xl font-extrabold text-center mb-6 text-gray-800">Lista de Tarefas</h1>
 
-  <div class="mb-4">
+  <div class="mb-6">
     <input
       [(ngModel)]="newTaskTitle"
-      class="border p-2 rounded w-full"
-      placeholder="Add a new task..."
+      class="border border-gray-300 p-3 rounded w-full shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+      placeholder="Adicionar nova tarefa..."
     />
     <button
       (click)="addTask()"
-      class="bg-blue-500 text-white py-2 px-4 rounded mt-2 w-full"
+      class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mt-3 w-full transition duration-300"
     >
-      Add Task
+      Adicionar Tarefa
     </button>
   </div>
 
-  <ul>
+  <ul class="space-y-3">
     <li
       *ngFor="let task of tasks"
-      class="flex justify-between items-center mb-2"
+      class="flex justify-between items-center p-3 bg-white rounded shadow-md hover:shadow-lg transition duration-300"
+      [ngClass]="{ 'line-through text-gray-500': task.completed }"
     >
-      <span>{{ task.title }}</span>
+      <div class="flex items-center">
+        <input
+          type="checkbox"
+          [(ngModel)]="task.completed"
+          (change)="updateTask(task)"
+          class="mr-3"
+        />
+        <span>{{ task.title }}</span>
+      </div>
       <button
         (click)="deleteTask(task.id!)"
-        class="bg-red-500 text-white py-1 px-3 rounded"
+        class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded transition duration-300"
       >
-        Delete
+        Deletar
       </button>
     </li>
   </ul>

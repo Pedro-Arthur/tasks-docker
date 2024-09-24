@@ -35,4 +35,18 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.put("/:id", async (req, res) => {
+  try {
+    const task = await Task.findByPk(req.params.id);
+    if (task) {
+      await task.update(req.body);
+      res.json(task);
+    } else {
+      res.status(404).json({ error: "Tarefa não encontrada" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao atualizar tarefa" });
+  }
+});
+
 module.exports = router;

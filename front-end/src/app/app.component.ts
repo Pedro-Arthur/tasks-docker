@@ -29,6 +29,10 @@ export class AppComponent implements OnInit {
   }
 
   addTask(): void {
+    if (!this.newTaskTitle) {
+      return;
+    }
+
     const newTask: Task = {
       title: this.newTaskTitle,
       completed: false,
@@ -43,6 +47,12 @@ export class AppComponent implements OnInit {
   deleteTask(id: number): void {
     this.taskService.deleteTask(id).subscribe(() => {
       this.tasks = this.tasks.filter((task) => task.id !== id);
+    });
+  }
+
+  updateTask(task: Task): void {
+    this.taskService.updateTask(task.id!, task).subscribe(() => {
+      this.loadTasks();
     });
   }
 }
