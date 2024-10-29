@@ -43,7 +43,12 @@ services:
       - "5431:${DB_PORT}"
     networks:
       - app-network
+    volumes:
+      - db_data:/var/lib/postgresql/data
 
 networks:
   app-network:
     driver: bridge
+  
+volumes:
+  db_data:
