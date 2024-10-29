@@ -3,21 +3,24 @@
     "username": "postgres",
     "password": "root",
     "database": "task_db",
-    "host": "127.0.0.1",
+    "host": "database",
+    "port": 5432,
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "root",
     "database": "task_db_test",
-    "host": "127.0.0.1",
+    "host": "database",
+    "port": 5432,
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "root",
     "database": "task_db_prod",
-    "host": "127.0.0.1",
+    "host": "database",
+    "port": 5432,
     "dialect": "postgres"
   }
 }
