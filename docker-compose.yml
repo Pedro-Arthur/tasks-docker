@@ -24,17 +24,23 @@ services:
       - "3000:3000"
     depends_on:
       - database
+    environment:
+      - DATABASE_USER=${DB_USER}
+      - DATABASE_PASSWORD=${DB_PASSWORD}
+      - DATABASE_NAME=${DB_NAME}
+      - DATABASE_PORT=${DB_PORT}
+      - DATABASE_HOST=${DB_HOST}
     networks:
       - app-network
 
   database:
     image: postgres:13
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=task_db
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
     ports:
-      - "5431:5432"
+      - "5431:${DB_PORT}"
     networks:
       - app-network
 
